@@ -1,0 +1,299 @@
+<!-- <div class="col-md-12">
+    <div class="col-md-4">
+        <div pf-aggregate-status-card status="devStatus" show-top-border="false" layout="tall"></div>
+    </div>
+    <div class="col-md-4">
+        <div pf-aggregate-status-card status="qaStatus" show-top-border="false" layout="tall"></div>
+    </div>
+    <div class="col-md-4">
+        <div pf-aggregate-status-card status="prodStatus" show-top-border="false" layout="tall"></div>
+    </div>
+</div>
+ -->
+<div class="col-md-4">
+    <h1 class="card-pf-heading">
+        <span align="center"><b>Development</b></span>
+        <accordion close-others="true" class="card-pf-title">
+            <accordion-group heading="Implemented JIRA Features">
+
+                <div class="list-group list-view-pf">
+                    <div class="list-group-item list-view-pf-stacked" ng-repeat="issue in issues">
+                        <!-- <div class="list-view-pf-actions">
+                            <button class="btn btn-default">Action</button>
+                            <div class="dropdown pull-right dropdown-kebab-pf">
+                                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebabRight1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span class="fa fa-ellipsis-v"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+
+                        </div> -->
+                        <div class="list-view-pf-main-info">
+                            <div class="list-view-pf-left">
+                                <span class="list-view-pf-icon-lg"><img src="img/jiralogo.png" height="50px"> </span>
+                            </div>
+                            <div class="list-view-pf-body">
+                                <div class="list-view-pf-description">
+                                    <div class="list-group-item-heading">
+                                        <a ng-href="{{issue.url}}">{{issue.key}}</a>
+                                        <!--<small>Feb 23, 2015 12:32 am</small>-->
+                                    </div>
+                                    <div class="list-group-item-text">
+                                        {{issue.description}}</a>
+                                    </div>
+                                </div>
+                                <!--<div class="list-view-pf-additional-info">
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </accordion-group>
+        </accordion>
+
+    </h1>
+
+    <div class="col-md-12" ng-repeat="dc in dcsdev">
+
+        <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-aggregate-status-mini">
+            <h2 class="card-pf-title">
+                <span class="pficon pficon-image"></span>
+                <span class="card-pf-aggregate-status-count">{{dc.spec.replicas}}</span> name: <b>{{dc.metadata.name}}</b>
+                <br><span>version: <b>{{dc.status.latestVersion}}</b></span>
+                <br><span>tag: <b>{{dc.status.details.causes[0].imageTrigger.from.name}}</b></span>
+
+            </h2>
+            <div class="card-pf-body">
+                <p class="card-pf-aggregate-status-notifications">
+                    <span class="card-pf-aggregate-status-notification"><a href="#" class="add" data-toggle="tooltip" data-placement="top" title="Add Ipsum"><span class="pficon pficon-ok"></span></a></span>
+                </p>
+                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#myitems">Promote</button>
+            </div>
+            <br>
+            <accordion close-others="true">
+                <accordion-group heading="env">
+
+                    <div pf-list-view items="dc.spec.template.spec.containers[0].env">
+                        <div class="list-view-pf-description">
+                            <div class="list-group-item-heading">
+                                {{item.name}}
+                            </div>
+                            <div class="list-group-item-text">
+                                {{item.value}}
+                            </div>
+                        </div>
+                    </div>
+                </accordion-group>
+            </accordion>
+
+        </div>
+
+    </div>
+</div>
+
+<div class="col-md-4">
+    <h1 class="card-pf-heading">
+        <span><b>Staging</b></span>
+        <accordion close-others="true" class="card-pf-title">
+            <accordion-group heading="Implemented JIRA Features">
+
+                <!--<div pf-list-view items="items">
+                    &lt;!&ndash;<div class="list-view-pf-description">
+                        <div class="list-group-item-heading">
+                            {{item.name}}
+                        </div>
+                        <div class="list-group-item-text">
+                            {{item.name}}
+                        </div>
+                    </div>&ndash;&gt;
+
+                </div>-->
+                <div class="list-group list-view-pf">
+                    <div class="list-group-item list-view-pf-stacked" ng-repeat="issue in jiraIssues">
+                        <!--<div class="list-view-pf-actions">
+                            <button class="btn btn-default">Action</button>
+                            <div class="dropdown pull-right dropdown-kebab-pf">
+                                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebabRight1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span class="fa fa-ellipsis-v"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+
+                        </div>-->
+                        <div class="list-view-pf-main-info">
+                            <div class="list-view-pf-left">
+                                <span class="list-view-pf-icon-lg"><img src="img/jiralogo.png" height="50px"> </span>
+                            </div>
+                            <div class="list-view-pf-body">
+                                <div class="list-view-pf-description">
+                                    <div class="list-group-item-heading">
+                                        <a ng-href="{{issue.url}}">{{issue.key}}</a>
+                                        <!--<small>Feb 23, 2015 12:32 am</small>-->
+                                    </div>
+                                    <div class="list-group-item-text">
+                                        {{issue.description}}</a>.
+                                    </div>
+                                </div>
+                                <!--<div class="list-view-pf-additional-info">
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </accordion-group>
+        </accordion>
+    </h1>
+
+    <div class="col-md-12" ng-repeat="dc in dcsqa">
+        <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-aggregate-status-mini">
+            <h2 class="card-pf-title">
+                <span class="pficon pficon-image"></span>
+                <span class="card-pf-aggregate-status-count">{{dc.spec.replicas}}</span> name: <b>{{dc.metadata.name}}</b>
+                <br><span>version: <b>{{dc.status.latestVersion}}</b></span>
+                <br><span>tag: <b>{{dc.status.details.causes[0].imageTrigger.from.name}}</b></span>
+
+            </h2>
+            <div class="card-pf-body">
+                <p class="card-pf-aggregate-status-notifications">
+                    <span class="card-pf-aggregate-status-notification"><a href="#" class="add" data-toggle="tooltip" data-placement="top" title="Add Ipsum"><span class="pficon pficon-ok"></span></a></span>
+                </p>
+                <button class="btn btn-primary" type="button">Promote</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-4">
+    <h1 class="card-pf-heading">
+        <span><b>Production</b></span>
+        <accordion close-others="true" class="card-pf-title">
+            <accordion-group heading="Implemented JIRA Features">
+
+                <!--<div pf-list-view items="items">
+                    &lt;!&ndash;<div class="list-view-pf-description">
+                        <div class="list-group-item-heading">
+                            {{item.name}}
+                        </div>
+                        <div class="list-group-item-text">
+                            {{item.name}}
+                        </div>
+                    </div>&ndash;&gt;
+
+                </div>-->
+                <div class="list-group list-view-pf">
+                    <div class="list-group-item list-view-pf-stacked" ng-repeat="issue in jiraIssues">
+                        <!--<div class="list-view-pf-actions">
+                            <button class="btn btn-default">Action</button>
+                            <div class="dropdown pull-right dropdown-kebab-pf">
+                                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownKebabRight1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    <span class="fa fa-ellipsis-v"></span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownKebabRight1">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
+                            </div>
+
+                        </div>-->
+                        <div class="list-view-pf-main-info">
+                            <div class="list-view-pf-left">
+                                <span class="list-view-pf-icon-lg"><img src="img/jiralogo.png" height="50px"> </span>
+                            </div>
+                            <div class="list-view-pf-body">
+                                <div class="list-view-pf-description">
+                                    <div class="list-group-item-heading">
+                                        <a ng-href="{{issue.url}}">{{issue.key}}</a>
+                                        <!--<small>Feb 23, 2015 12:32 am</small>-->
+                                    </div>
+                                    <div class="list-group-item-text">
+                                        {{issue.description}}</a>.
+                                    </div>
+                                </div>
+                                <!--<div class="list-view-pf-additional-info">
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                    <div class="list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart">
+                                        <span></span>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </accordion-group>
+        </accordion>
+    </h1>
+
+
+    <div class="col-md-12" ng-repeat="dc in dcsprod">
+        <div class="card-pf card-pf-accented card-pf-aggregate-status card-pf-aggregate-status-mini">
+            <h2 class="card-pf-title">
+                <span class="pficon pficon-image"></span>
+                <span class="card-pf-aggregate-status-count">{{dc.spec.replicas}}</span> name: <b>{{dc.metadata.name}}</b>
+                <br><span>version: <b>{{dc.status.latestVersion}}</b></span>
+                <br><span>tag: <b>{{dc.status.details.causes[0].imageTrigger.from.name}}</b></span>
+
+            </h2>
+            <div class="card-pf-body">
+                <p class="card-pf-aggregate-status-notifications">
+                    <span class="card-pf-aggregate-status-notification"><a href="#" class="add" data-toggle="tooltip" data-placement="top" title="Add Ipsum"><span class="pficon pficon-ok"></span></a></span>
+                </p>
+                <button class="btn btn-primary" type="button">Promote</button>
+            </div>
+        </div>
+    </div></div>
+
+<!--
+<div class="col-md-12">
+    <label class="events-label">Events: </label>
+</div>
+<div class="col-md-12">
+    <textarea rows="10" class="col-md-12">{{eventText}}</textarea>
+</div>-->
